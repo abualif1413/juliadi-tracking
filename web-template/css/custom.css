@@ -1,1 +1,16 @@
 /* your styles go here */
+.form-control-label {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+table.table tbody tr:hover{
+    background-color: rgba(16, 117, 134, 0.48);
+    color: white;
+    box-shadow: #cccccc  5px 5px 3px;
+}
+
+.btn {
+    border-radius: 3px;
+    box-shadow: #558262  2px 2px 3px;
+}

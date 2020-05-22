@@ -4,36 +4,25 @@
       <div class="sidenav-header d-flex align-items-center justify-content-center">
          <!-- User Info-->
          <div class="sidenav-header-inner text-center">
-            <img src="img/avatar-7.jpg" alt="person" class="img-fluid rounded-circle">
-            <h2 class="h5">Nathan Andrews</h2>
-            <span>Web Developer</span>
+            @if(session('EmployeeID') == 'root')
+               <i class="fa fa-floppy-o fa-lg" style="font-size: 200%;"></i>
+            @else
+               <i class="fa fa-users fa-lg" style="font-size: 200%;"></i>
+            @endif
+            <h2 class="h5">{{ session('EmployeeName') }}</h2>
+            <span>{{ session('EmployeePosition') }}</span>
          </div>
          <!-- Small Brand information, appears on minimized sidebar-->
-         <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
+         <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>T</strong><strong class="text-primary">R</strong></a></div>
       </div>
       <!-- Sidebar Navigation Menus-->
       <div class="main-menu">
-         <h5 class="sidenav-heading">APLIKASI</h5>
+         <h5 class="sidenav-heading">APPS</h5>
          <ul id="side-main-menu" class="side-menu list-unstyled">
-            <li><a href=""><i class="icon-home"></i>Home</a></li>
-            <li><a href=""><i class="icon-form"></i>Forms</a></li>
-            <li><a href=""><i class="fa fa-bar-chart"></i>Charts</a></li>
-            <li><a href=""><i class="icon-grid"></i>Tables</a></li>
-            <li>
-               <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
-               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                  <li><a href="#">Page</a></li>
-                  <li><a href="#">Page</a></li>
-                  <li><a href="#">Page</a></li>
-               </ul>
-            </li>
-            <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page                             </a></li>
-            <li>
-               <a href="#">
-                  <i class="icon-mail"></i>Demo
-                  <div class="badge badge-warning">6 New</div>
-               </a>
-            </li>
+            <li><a href="{{ url('/') }}"><i class="fa fa-home"></i>Home</a></li>
+            <li><a href="{{ url('/Receipt') }}"><i class="fa fa-mail-reply"></i>Tambah Saldo</a></li>
+            <li><a href="{{ url('/RequesitionSlip') }}"><i class="fa fa-mail-forward"></i>Pengeluaran</a></li>
+            <li><a href="{{ url('/RequesitionApproval') }}"><i class="fa fa-sign-in"></i>Approval Pengeluaran</a></li>
          </ul>
       </div>
 
@@ -41,7 +30,8 @@
          <h5 class="sidenav-heading">MASTER DATA</h5>
          <ul id="side-main-menu" class="side-menu list-unstyled">
             <li><a href="{!! url('/') !!}/EmployeeMaster"><i class="fa fa-users"></i>Karyawan</a></li>
-            <li><a href=""><i class="fa fa-briefcase"></i>Kategori Kas</a></li>
+            <li><a href="{{ url('/CashAccountMaster') }}"><i class="fa fa-briefcase"></i>Kategori Kas</a></li>
+            <li><a href="{{ url('/UserMaster') }}"><i class="fa fa-address-book"></i>Buat Akun</a></li>
          </ul>
       </div>
    </div>

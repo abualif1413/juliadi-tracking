@@ -5,7 +5,7 @@
             <div class="navbar-header">
                <a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a>
                <a href="index.html" class="navbar-brand">
-                  <div class="brand-text d-none d-md-inline-block"><span>Bootstrap </span><strong class="text-primary">Dashboard</strong></div>
+                  <div class="brand-text d-none d-md-inline-block">TRACKING &amp; REINBURST</div>
                </a>
             </div>
             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
@@ -91,7 +91,12 @@
                   </ul>
                </li>
                <!-- Log out-->
-               <li class="nav-item"><a href="login.html" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
+               <li class="nav-item">
+                  <a href="javascript:void(0);" onclick="LogOutApps('{{ url('/Login/Logout') }}'); // this function available on web-template/js/custom.js" class="nav-link logout">
+                     <span class="d-none d-sm-inline-block">Logout</span>
+                     <i class="fa fa-sign-out"></i>
+                  </a>
+               </li>
             </ul>
          </div>
       </div>

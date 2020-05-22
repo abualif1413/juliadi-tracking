@@ -24,13 +24,39 @@ class EmployeeMasterController extends Controller
     }
 
     public function AddEmployee(Request $request) {
-        $employee = new Employee;
-        $employee->EmployeeName = $request->get("employeeName");
-        $employee->EmployeePosition = $request->get("employeePosition");
-        $employee->EmployeePhoneNumber = $request->get("employeePhoneNumber");
-        $employee->EmployeeAddress = $request->get("employeeAddress");
-        $employee->WorkSiteID = $request->get("employeeSiteId");
-        $employee->save();
+        //echo "btn submit = " . $request->get("btn_submit");
+        //exit;
+        if($request->get("dataProcessType") == "add") {
+            $employee = new Employee;
+            $employee->EmployeeName = $request->get("employeeName");
+            $employee->EmployeePosition = $request->get("employeePosition");
+            $employee->EmployeePhoneNumber = $request->get("employeePhoneNumber");
+            $employee->EmployeeAddress = $request->get("employeeAddress");
+            $employee->WorkSiteID = $request->get("employeeSiteId");
+            $employee->save();
+        } elseif ($request->get("dataProcessType") == "update") {
+            $employee = Employee::findOrFail($request->get("employeeId"));
+            $employee->EmployeeName = $request->get("employeeName");
+            $employee->EmployeePosition = $request->get("employeePosition");
+            $employee->EmployeePhoneNumber = $request->get("employeePhoneNumber");
+            $employee->EmployeeAddress = $request->get("employeeAddress");
+            $employee->WorkSiteID = $request->get("employeeSiteId");
+            $employee->save();
+        }
+        
+
+        return \Redirect::to("/EmployeeMaster");
+    }
+
+    public function GoEditEmployee(Request $request) {
+        $employee = Employee::find($request->get("EmployeeID"));
+
+        return json_encode($employee);
+    }
+
+    public function GoDeleteEmployee($EmployeeID) {
+        $employee = Employee::find($EmployeeID);
+        $employee->delete();
 
         return \Redirect::to("/EmployeeMaster");
     }
