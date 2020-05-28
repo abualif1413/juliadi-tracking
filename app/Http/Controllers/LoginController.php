@@ -28,7 +28,8 @@ class LoginController extends Controller
             session([
                 'EmployeeID' => 'root',
                 'EmployeeName' => 'Root',
-                'EmployeePosition' => 'Super Admin'
+                'EmployeePosition' => 'Super Admin',
+                'AccountRole' => 1
             ]);
         } 
         /// If non super admin 
@@ -37,14 +38,15 @@ class LoginController extends Controller
                         ->leftJoin('employee', 'employeeUserAccount.EmployeeID', '=', 'employee.EmployeeID')
                         ->where('Username', $username)
                         ->where('Password', $password)
-                        ->select('employeeUserAccount.*', 'employee.EmployeeName', 'employee.EmployeePosition')
+                        ->select('employeeUserAccount.*', 'employee.EmployeeName', 'employee.EmployeePosition', 'employeeUserAccount.UserAccountRoleID')
                         ->get();
             if(count($auth) > 0) {
                 $successLogin = 1;
                 session([
                     'EmployeeID' => $auth[0]->EmployeeID,
                     'EmployeeName' => $auth[0]->EmployeeName,
-                    'EmployeePosition' => $auth[0]->EmployeePosition
+                    'EmployeePosition' => $auth[0]->EmployeePosition,
+                    'AccountRole' => $auth[0]->UserAccountRoleID
                 ]);
             } else {
                 $successLogin = 0;

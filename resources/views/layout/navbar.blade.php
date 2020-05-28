@@ -10,6 +10,7 @@
             </div>
             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                <!-- Notifications dropdown-->
+               <!--
                <li class="nav-item dropdown">
                   <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
@@ -48,7 +49,10 @@
                      <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-bell"></i>view all notifications                                            </strong></a></li>
                   </ul>
                </li>
+               -->
+
                <!-- Messages dropdown-->
+               <!--
                <li class="nav-item dropdown">
                   <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
@@ -82,7 +86,10 @@
                      <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Read all messages    </strong></a></li>
                   </ul>
                </li>
+               -->
+
                <!-- Languages dropdown    -->
+               <!--
                <li class="nav-item dropdown">
                   <a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
                   <ul aria-labelledby="languages" class="dropdown-menu">
@@ -90,11 +97,13 @@
                      <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/FR.png" alt="English" class="mr-2"><span>French                                                         </span></a></li>
                   </ul>
                </li>
+               -->
+
                <!-- Log out-->
                <li class="nav-item">
                   <a href="javascript:void(0);" onclick="LogOutApps('{{ url('/Login/Logout') }}'); // this function available on web-template/js/custom.js" class="nav-link logout">
                      <span class="d-none d-sm-inline-block">Logout</span>
-                     <i class="fa fa-sign-out"></i>
+                     <i class="fa fa-sign-out fa-lg"></i>
                   </a>
                </li>
             </ul>

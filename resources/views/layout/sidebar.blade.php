@@ -18,26 +18,35 @@
       <!-- Sidebar Navigation Menus-->
       <div class="main-menu">
          <h5 class="sidenav-heading">APPS</h5>
-         <ul id="side-main-menu" class="side-menu list-unstyled">
-            <li><a href="{{ url('/') }}"><i class="fa fa-home"></i>Home</a></li>
-            <li><a href="{{ url('/CashTopUp') }}"><i class="fa fa-mail-reply"></i>Tambah Saldo</a></li>
-            <li><a href="{{ url('/RequesitionSlip') }}"><i class="fa fa-mail-forward"></i>Pengeluaran</a></li>
-            <li><a href="{{ url('/RequesitionApproval') }}"><i class="fa fa-sign-in"></i>Approval Pengeluaran</a></li>
-            <li><a href="#laporan" aria-expanded="false" data-toggle="collapse"><i class="fa fa-list-ul"></i>Laporan</a>
-              <ul id="laporan" class="collapse list-unstyled ">
-                <li><a href="#"><i class="fa fa-book"></i>Buku kas</a></li>
-              </ul>
-            </li>
-         </ul>
+         @if(session('AccountRole') == 1)
+            <ul id="side-main-menu" class="side-menu list-unstyled">
+               <li><a href="{{ url('/') }}"><i class="fa fa-home"></i>Home</a></li>
+               <li><a href="{{ url('/CashTopUp') }}"><i class="fa fa-mail-reply"></i>Tambah Saldo</a></li>
+               <li><a href="{{ url('/RequesitionSlip') }}"><i class="fa fa-mail-forward"></i>Pengeluaran</a></li>
+               <li><a href="{{ url('/RequesitionApproval') }}"><i class="fa fa-sign-in"></i>Approval Pengeluaran</a></li>
+               <li><a href="#laporan" aria-expanded="false" data-toggle="collapse"><i class="fa fa-list-ul"></i>Laporan</a>
+               <ul id="laporan" class="collapse list-unstyled ">
+                  <li><a href="#"><i class="fa fa-book"></i>Buku kas</a></li>
+               </ul>
+               </li>
+            </ul>
+         @elseif(session('AccountRole') == 2)
+            <ul id="side-main-menu" class="side-menu list-unstyled">
+               <li><a href="{{ url('/') }}"><i class="fa fa-home"></i>Home</a></li>
+               <li><a href="{{ url('/RequesitionSlip') }}"><i class="fa fa-mail-forward"></i>Pengeluaran</a></li>
+            </ul>
+         @endif
       </div>
 
-      <div class="main-menu">
-         <h5 class="sidenav-heading">MASTER DATA</h5>
-         <ul id="side-main-menu" class="side-menu list-unstyled">
-            <li><a href="{!! url('/') !!}/EmployeeMaster"><i class="fa fa-users"></i>Karyawan</a></li>
-            <li><a href="{{ url('/CashAccountMaster') }}"><i class="fa fa-briefcase"></i>Kategori Kas</a></li>
-            <li><a href="{{ url('/UserMaster') }}"><i class="fa fa-address-book"></i>Buat Akun</a></li>
-         </ul>
-      </div>
+      @if(session('AccountRole') == 1)
+         <div class="main-menu">
+            <h5 class="sidenav-heading">MASTER DATA</h5>
+            <ul id="side-main-menu" class="side-menu list-unstyled">
+               <li><a href="{!! url('/') !!}/EmployeeMaster"><i class="fa fa-users"></i>Karyawan</a></li>
+               <li><a href="{{ url('/CashAccountMaster') }}"><i class="fa fa-briefcase"></i>Kategori Kas</a></li>
+               <li><a href="{{ url('/UserMaster') }}"><i class="fa fa-address-book"></i>Buat Akun</a></li>
+            </ul>
+         </div>
+      @endif
    </div>
 </nav>
