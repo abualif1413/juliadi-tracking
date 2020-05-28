@@ -51,6 +51,9 @@ Route::middleware('authLogin')->group(function() {
     Route::get('/RequesitionApproval/GoApprove/{RequestID}', 'RequesitionApprovalController@GoApprove');
     Route::post('/RequesitionApproval/ApproveTrue', 'RequesitionApprovalController@ApproveTrue');
     Route::post('/RequesitionApproval/ApproveFalse', 'RequesitionApprovalController@ApproveFalse');
+	
+	Route::get('/CashTopUp', 'CashTopUpController@Index');
+	Route::post('/CashTopUp/AddTopUp', 'CashTopUpController@AddTopUp');
 
     Route::post('/ValidatorMethod/UniqueUserName', 'ValidatorMethod@UniqueUserName');
 });

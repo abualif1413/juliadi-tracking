@@ -20,7 +20,7 @@
          <h5 class="sidenav-heading">APPS</h5>
          <ul id="side-main-menu" class="side-menu list-unstyled">
             <li><a href="{{ url('/') }}"><i class="fa fa-home"></i>Home</a></li>
-            <li><a href="{{ url('/Receipt') }}"><i class="fa fa-mail-reply"></i>Tambah Saldo</a></li>
+            <li><a href="{{ url('/CashTopUp') }}"><i class="fa fa-mail-reply"></i>Tambah Saldo</a></li>
             <li><a href="{{ url('/RequesitionSlip') }}"><i class="fa fa-mail-forward"></i>Pengeluaran</a></li>
             <li><a href="{{ url('/RequesitionApproval') }}"><i class="fa fa-sign-in"></i>Approval Pengeluaran</a></li>
          </ul>
