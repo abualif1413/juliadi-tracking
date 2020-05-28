@@ -1,7 +1,6 @@
+/web-template
 /node_modules/*
 !/node_modules/sweetalert2
-
-/web-template/*
 #/public/hot
 #/public/storage
 #/storage/*.key
