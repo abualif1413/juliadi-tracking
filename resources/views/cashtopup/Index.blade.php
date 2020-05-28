@@ -5,7 +5,7 @@
     <h1 class="h3 display"><i class="fa fa-mail-reply fa-lg">&nbsp;</i> Tambah Saldo</h1>
 </header>
 
-<form method="post" action="{{ url('/CashTopUp/AddTopUp') }}" id="frmTopUp">
+<form method="post" action="{{ url('/CashTopUp/AddTopUp') }}" id="frmTopUp" onreset="goReset();">
     @csrf()
     <input type="hidden" name="CashTopUpID" id="CashTopUpID" />
     <input type="hidden" name="submitType" id="submitType" value="add" />
@@ -42,6 +42,7 @@
         </div>
         <div class="card-footer">
             <button class="btn btn-primary" id="btn_save"><i class="fa fa-save">&nbsp;</i> Simpan</button>
+            <button class="btn btn-warning" id="btn_reset" style="display: none;" type="reset"><i class="fa fa-refresh">&nbsp;</i> Reset</button>
         </div>
     </div>
 </form>
@@ -67,10 +68,10 @@
                 @foreach($cashTopUpData as $index => $data)
                 	<tr>
                 		<td>
-                            <button class="btn btn-success btn-sm btn-block" onclick="GoEdit('{{ Crypt::encryptString($data->CashTopUpID) }}');"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-success btn-sm btn-block" onclick="goEdit('{{ Crypt::encryptString($data->CashTopUpID) }}');"><i class="fa fa-pencil"></i></button>
                         </td>
                         <td>
-                            <button class="btn btn-warning btn-sm btn-block" onclick="GoDelete('{{ Crypt::encryptString($data->CashTopUpID) }}');"><i class="fa fa-trash"></i></button>
+                            <button class="btn btn-warning btn-sm btn-block" onclick="goDelete('{{ Crypt::encryptString($data->CashTopUpID) }}');"><i class="fa fa-trash"></i></button>
                         </td>
                 		<td>{{ ($index + 1) }}</td>
                 		<td>{{ $data->CashAccountName }}</td>
@@ -131,5 +132,40 @@
     		}
     	);
     });
+
+    function goEdit(cashTopUpId) {
+        $.ajax({
+            async       : false,
+            headers     : {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            url         : "{{ url('/CashTopUp/GoEdit') }}",
+            dataType    : "json",
+            type        : "post",
+            data        : {CashTopUpID:cashTopUpId},
+            success     : function(r) {
+                $("#CashAccountID").val(r.CashAccountID);
+                $("#Amount").val(r.Amount);
+                $("#TopUpDate").val(r.TopUpDate.substring(0, 10));
+                $("#Remark").val(r.Remark);
+                $("#CashTopUpID").val(cashTopUpId);
+                $("#submitType").val("update");
+                $("#btn_reset").show();
+                window.scrollTo(0, 0);
+            }
+        });
+    }
+
+    function goDelete(cashTopUpId) {
+        sweetConfirm(
+            "Perhatian", "Anda yakin akan menghapus data ini?",
+            function() {
+                document.location.href = "{{ url('/CashTopUp/GoDelete') }}/" + cashTopUpId;
+            }
+        );
+    }
+
+    function goReset() {
+        $("#submitType").val("add");
+        $("#btn_reset").hide();
+    }
 </script>
 @endsection

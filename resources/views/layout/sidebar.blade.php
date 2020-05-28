@@ -23,6 +23,11 @@
             <li><a href="{{ url('/CashTopUp') }}"><i class="fa fa-mail-reply"></i>Tambah Saldo</a></li>
             <li><a href="{{ url('/RequesitionSlip') }}"><i class="fa fa-mail-forward"></i>Pengeluaran</a></li>
             <li><a href="{{ url('/RequesitionApproval') }}"><i class="fa fa-sign-in"></i>Approval Pengeluaran</a></li>
+            <li><a href="#laporan" aria-expanded="false" data-toggle="collapse"><i class="fa fa-list-ul"></i>Laporan</a>
+              <ul id="laporan" class="collapse list-unstyled ">
+                <li><a href="#"><i class="fa fa-book"></i>Buku kas</a></li>
+              </ul>
+            </li>
          </ul>
       </div>
 

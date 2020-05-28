@@ -53,7 +53,9 @@ Route::middleware('authLogin')->group(function() {
     Route::post('/RequesitionApproval/ApproveFalse', 'RequesitionApprovalController@ApproveFalse');
 	
 	Route::get('/CashTopUp', 'CashTopUpController@Index');
-	Route::post('/CashTopUp/AddTopUp', 'CashTopUpController@AddTopUp');
+    Route::post('/CashTopUp/AddTopUp', 'CashTopUpController@AddTopUp');
+    Route::post('/CashTopUp/GoEdit', 'CashTopUpController@GoEdit');
+    Route::get('/CashTopUp/GoDelete/{cashTopUpId}', 'CashTopUpController@GoDelete');
 
     Route::post('/ValidatorMethod/UniqueUserName', 'ValidatorMethod@UniqueUserName');
 });
